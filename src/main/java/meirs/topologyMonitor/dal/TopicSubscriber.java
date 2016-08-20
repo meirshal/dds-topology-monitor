@@ -18,7 +18,7 @@ import java.util.function.Consumer;
 /**
  * Created by Meir Shalev on 20/08/16.
  */
-public class Subscriber {
+public class TopicSubscriber {
 
     private Class<?> typeClass;
     private TypeSupportImpl typeSupport;
@@ -34,11 +34,11 @@ public class Subscriber {
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    public Subscriber(Class<?> typeClass,
-                      TypeSupportImpl typeSupport,
-                      DomainParticipant participant,
-                      String topicName,
-                      Consumer<Object> callback) {
+    public TopicSubscriber(Class<?> typeClass,
+                           TypeSupportImpl typeSupport,
+                           DomainParticipant participant,
+                           String topicName,
+                           Consumer<Object> callback) {
 
         this.typeClass = typeClass;
         this.typeSupport = typeSupport;
