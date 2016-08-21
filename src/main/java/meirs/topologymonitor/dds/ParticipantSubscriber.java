@@ -1,11 +1,11 @@
-package meirs.topologyMonitor.dds;
+package meirs.topologymonitor.dds;
 
 import com.rti.dds.domain.DomainParticipant;
 import com.rti.dds.domain.DomainParticipantFactory;
 import com.rti.dds.domain.DomainParticipantQos;
 import com.rti.dds.infrastructure.StatusKind;
 
-import meirs.topologyMonitor.adapter.DDSToTopologyAdapter;
+import meirs.topologymonitor.adapter.DDSToTopologyAdapter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

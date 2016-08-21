@@ -1,4 +1,4 @@
-package meirs.topologyMonitor.util;
+package meirs.topologymonitor.util;
 
 import DDSMonitoring.BuiltinTopicKey_t;
 import DDSMonitoring.RTIInstanceHandle;

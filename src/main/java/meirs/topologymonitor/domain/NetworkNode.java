@@ -1,26 +1,16 @@
-package meirs.topologyMonitor.domain;
-
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.voodoodyne.jackson.jsog.JSOGGenerator;
-import org.neo4j.ogm.annotation.GraphId;
-import org.neo4j.ogm.annotation.NodeEntity;
-import org.neo4j.ogm.annotation.Relationship;
+package meirs.topologymonitor.domain;
 
 import java.util.List;
 
 /**
  * Created by Meir Shalev on 20/08/16.
  */
-
-@JsonIdentityInfo(generator=JSOGGenerator.class)
-@NodeEntity
 public class NetworkNode {
 
-    @GraphId String id;
+    String id;
 
     private String statistics;
 
-    @Relationship(type="PUBLISHES_TO", direction = Relationship.OUTGOING)
     private List<NetworkNode> publishesTo;
 
     public NetworkNode(String id, String statistics) {

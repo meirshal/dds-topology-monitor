@@ -1,9 +1,8 @@
-package meirs.topologyMonitor.adapter;
+package meirs.topologymonitor.adapter;
 
-import meirs.topologyMonitor.dal.Dao;
-import meirs.topologyMonitor.domain.NetworkNode;
-import meirs.topologyMonitor.domain.Subscription;
-import meirs.topologyMonitor.util.Util;
+import meirs.topologymonitor.dal.Dao;
+import meirs.topologymonitor.domain.NetworkNode;
+import meirs.topologymonitor.util.Util;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import rti.dds.monitoring.DataReaderEntityStatistics;

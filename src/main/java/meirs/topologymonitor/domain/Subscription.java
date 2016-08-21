@@ -1,24 +1,15 @@
-package meirs.topologyMonitor.domain;
-
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.voodoodyne.jackson.jsog.JSOGGenerator;
-import org.neo4j.ogm.annotation.EndNode;
-import org.neo4j.ogm.annotation.GraphId;
-import org.neo4j.ogm.annotation.RelationshipEntity;
-import org.neo4j.ogm.annotation.StartNode;
+package meirs.topologymonitor.domain;
 
 /**
  * Created by Meir Shalev on 20/08/16.
  */
 
-@JsonIdentityInfo(generator = JSOGGenerator.class)
-@RelationshipEntity(type = "PUBLISHES_TO")
 public class Subscription {
 
-    @GraphId Long id;
+    private Long id;
 
-    @StartNode private NetworkNode publisher;
-    @EndNode private NetworkNode subscriber;
+    private NetworkNode publisher;
+    private NetworkNode subscriber;
 
     public Long getId() {
         return id;

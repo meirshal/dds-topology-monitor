@@ -1,4 +1,4 @@
-package meirs.topologyMonitor.adapter;
+package meirs.topologymonitor.adapter;
 
 import rti.dds.monitoring.DataReaderEntityStatistics;
 import rti.dds.monitoring.DataWriterEntityMatchedSubscriptionStatistics;
