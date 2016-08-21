@@ -1,11 +1,11 @@
-package meirs.topologyMonitor.dal;
+package meirs.topologyMonitor.dds;
 
 import com.rti.dds.domain.DomainParticipant;
 import com.rti.dds.domain.DomainParticipantFactory;
 import com.rti.dds.domain.DomainParticipantQos;
 import com.rti.dds.infrastructure.StatusKind;
 
-import meirs.topologyMonitor.util.Util;
+import meirs.topologyMonitor.adapter.DDSToTopologyAdapter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -21,20 +21,9 @@ public class ParticipantSubscriber {
     private static final String readerStatisticsTopicName = "rti/dds/monitoring/dataReaderEntityStatistics";
     private static final String writerStatisticsTopicName = "rti/dds/monitoring/dataWriterEntityStatistics";
     private static final String writerMatchedTopicName = "rti/dds/monitoring/dataWriterEntityMatchedSubscriptionStatistics";
-    private static final String readerMatchedTopicName = "rti/dds/monitoring/dataReaderEntityMatchedPublicationStatistics ";
 
-    public static void main(String[] args) throws Exception {
+    public ParticipantSubscriber(int domainId, DDSToTopologyAdapter adapter) {
 
-        int domainId = Integer.valueOf(args[0]);
-
-        new ParticipantSubscriber(domainId);
-
-        while (true) {
-            Thread.sleep(10000);
-        }
-    }
-
-    public ParticipantSubscriber(int domainId) {
         DomainParticipantQos qos = new DomainParticipantQos();
         DomainParticipantFactory.TheParticipantFactory.get_participant_qos_from_profile(qos, "RtiMonitorQosLibrary", "RtiMonitorQosProfile");
 
@@ -58,34 +47,18 @@ public class ParticipantSubscriber {
                 DataReaderEntityStatisticsTypeSupport.get_instance(),
                 participant,
                 readerStatisticsTopicName,
-                entity -> {
-                    //logger.info(entity.toString());
-                    DataReaderEntityStatistics stats = (DataReaderEntityStatistics) entity;
-                    logger.info("Reader's key: " + Util.builtinTopicKeyToBase64(stats.datareader_key));
-                });
+                entity -> adapter.onReaderStatisticsReceived((DataReaderEntityStatistics) entity));
 
         TopicSubscriber writerSubscriber = new TopicSubscriber(DataWriterEntityStatistics.class,
                 DataWriterEntityStatisticsTypeSupport.get_instance(),
                 participant,
                 writerStatisticsTopicName,
-                entity -> logger.info(entity.toString()));
+                entity -> adapter.onWriterStatisticsReceived((DataWriterEntityStatistics) entity));
 
         TopicSubscriber writerMatchedSubscriber = new TopicSubscriber(DataWriterEntityMatchedSubscriptionStatistics.class,
                 DataWriterEntityMatchedSubscriptionStatisticsTypeSupport.get_instance(),
                 participant,
                 writerMatchedTopicName,
-                entity -> {
-                    //logger.info(entity.toString());
-                    DataWriterEntityMatchedSubscriptionStatistics stats = (DataWriterEntityMatchedSubscriptionStatistics) entity;
-
-                    logger.info("Subscription handle: " + Util.instanceHandleToBase64(stats.subscription_handle));
-                });
-
-//        Subscriber readerMatchedSubscriber = new Subscriber(DataReaderEntityMatchedPublicationStatistics.class,
-//                DataReaderEntityMatchedPublicationStatisticsTypeSupport.get_instance(),
-//                participant,
-//                readerMatchedTopicName,
-//                entity -> logger.info(entity.toString()));
-
+                entity -> adapter.onWriterMatchedReceived((DataWriterEntityMatchedSubscriptionStatistics) entity));
     }
 }

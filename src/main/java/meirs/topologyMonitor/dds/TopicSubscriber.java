@@ -1,4 +1,4 @@
-package meirs.topologyMonitor.dal;
+package meirs.topologyMonitor.dds;
 
 import com.rti.dds.domain.DomainParticipant;
 import com.rti.dds.domain.DomainParticipantFactory;
