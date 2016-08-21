@@ -14,8 +14,8 @@ public class DaoImpl implements Dao {
 
     private static final String SAVE_CYPHER_QUERY =
             " MERGE (n: NetworkNode {id: {1}})\n" +
-            " ON MERGE n.json = {2}\n" +
-            " ON CREATE n.json = {2}";
+            " ON MATCH SET n.json = {2}\n" +
+            " ON CREATE SET n.json = {2}";
 
     private static final String DELETE_CYPHER_QUERY =
             " OPTIONAL MATCH (n:NetworkNode)\n" +
@@ -25,7 +25,7 @@ public class DaoImpl implements Dao {
     private static final String ADD_CONNECTION_CYPHER_QUERY =
             " MERGE (n1:NetworkNode{id: {1}})\n" +
             " MERGE (n2:NetworkNode{id: {2}})\n" +
-            " CREATE (n1)-[:PUBLISHES_TO]->(n2)";
+            " MERGE (n1)-[:PUBLISHES_TO]->(n2)";
 
     private JdbcTemplate template;
 
