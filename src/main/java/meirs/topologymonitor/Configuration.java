@@ -14,6 +14,7 @@ public class Configuration {
 
     @Bean
     public DataSource dataSource() {
+        //TODO: get username and password from env
         return new DriverManagerDataSource(NEO4J_URL, "neo4j", "123456");
     }
 }

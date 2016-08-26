@@ -1,4 +1,4 @@
-package meirs.topologymonitor.util;
+package meirs.topologymonitor.util.strings;
 
 import DDSMonitoring.BuiltinTopicKey_t;
 import DDSMonitoring.RTIInstanceHandle;
@@ -9,10 +9,10 @@ import java.util.Base64;
 /**
  * Created by Meir Shalev on 20/08/16.
  */
-public class Util {
+public class Base64Encoder {
 
     public static String instanceHandleToBase64(RTIInstanceHandle instanceHandle) {
-        String guidAsBase64 = Base64.getEncoder().encodeToString(instanceHandle.value);
+        String guidAsBase64 = java.util.Base64.getEncoder().encodeToString(instanceHandle.value);
 
         return guidAsBase64;
     }
@@ -24,7 +24,7 @@ public class Util {
             buffer.putInt(key.value[i]);
         }
 
-        String guidAsBase64 = Base64.getEncoder().encodeToString(buffer.array());
+        String guidAsBase64 = java.util.Base64.getEncoder().encodeToString(buffer.array());
         return guidAsBase64;
     }
 }
