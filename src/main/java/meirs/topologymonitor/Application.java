@@ -24,7 +24,6 @@ import javax.annotation.PostConstruct;
 @EnableAutoConfiguration
 @Import(DBConfiguration.class)
 public class Application {
-    private static Logger logger = LoggerFactory.getLogger(Application.class);
 
     @Value("${domainId}")
     private String domainIdString;
@@ -40,7 +39,6 @@ public class Application {
 
     @PostConstruct
     private void runApp() throws Exception {
-        Class.forName("org.neo4j.jdbc.Driver");
 
         dao = new DaoImpl(template);
         DDSToTopologyAdapter adapter = new DDSToTopologyAdapterImpl(dao);

@@ -31,8 +31,10 @@ public class DaoImpl implements Dao {
 
     private JdbcTemplate template;
 
-    public DaoImpl(JdbcTemplate template) {
+    public DaoImpl(JdbcTemplate template) throws ClassNotFoundException {
         this.template = template;
+
+        Class.forName("org.neo4j.jdbc.Driver");
     }
 
     @Override
