@@ -4,6 +4,7 @@ import DDSMonitoring.BuiltinTopicKey_t;
 import DDSMonitoring.RTIInstanceHandle;
 
 import java.nio.ByteBuffer;
+import java.util.Base64;
 
 /**
  * Created by Meir Shalev on 20/08/16.
@@ -11,7 +12,7 @@ import java.nio.ByteBuffer;
 public class Base64Encoder {
 
     public static String instanceHandleToBase64(RTIInstanceHandle instanceHandle) {
-        return java.util.Base64.getEncoder().encodeToString(instanceHandle.value);
+        return Base64.getEncoder().encodeToString(instanceHandle.value);
     }
 
     public static String builtinTopicKeyToBase64(BuiltinTopicKey_t key) {
@@ -21,6 +22,6 @@ public class Base64Encoder {
             buffer.putInt(key.value[i]);
         }
 
-        return java.util.Base64.getEncoder().encodeToString(buffer.array());
+        return Base64.getEncoder().encodeToString(buffer.array());
     }
 }
