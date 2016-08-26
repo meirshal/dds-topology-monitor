@@ -28,7 +28,7 @@ public class StatisticsToJsonTest {
     }
 
     @Test
-    public void testWrtierStatistics() throws Exception {
+    public void testWriterStatistics() throws Exception {
         DataWriterEntityStatistics entity = new DataWriterEntityStatistics();
         objectMapper.writeValueAsString(entity);
     }

@@ -12,8 +12,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Import;
 import org.springframework.jdbc.core.JdbcTemplate;
 
@@ -24,7 +22,7 @@ import javax.annotation.PostConstruct;
  */
 @SpringBootApplication
 @EnableAutoConfiguration
-@Import(Configuration.class)
+@Import(DBConfiguration.class)
 public class Application {
     private static Logger logger = LoggerFactory.getLogger(Application.class);
 
