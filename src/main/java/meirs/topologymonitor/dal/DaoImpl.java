@@ -25,7 +25,9 @@ public class DaoImpl implements Dao {
     private static final String ADD_CONNECTION_CYPHER_QUERY =
             " MERGE (n1:NetworkNode{id: {1}})\n" +
             " MERGE (n2:NetworkNode{id: {2}})\n" +
-            " MERGE (n1)-[:PUBLISHES_TO]->(n2)";
+            " MERGE (n1)-[r:PUBLISHES_TO]->(n2)\n" +
+            " ON MATCH SET r.statistics = {3}\n" +
+            " ON CREATE SET r.statistics = {3}";
 
     private JdbcTemplate template;
 
@@ -46,8 +48,8 @@ public class DaoImpl implements Dao {
     }
 
     @Override
-    public void setPublicationConnection(String publisher, String subscriber) {
-        template.update(ADD_CONNECTION_CYPHER_QUERY, publisher, subscriber);
+    public void setPublicationConnection(String publisher, String subscriber, String statistics) {
+        template.update(ADD_CONNECTION_CYPHER_QUERY, publisher, subscriber, statistics);
         logger.info("Updated publication connection: " + publisher + "->" + subscriber);
     }
 }

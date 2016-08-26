@@ -11,6 +11,6 @@ public interface Dao {
 
     void deleteNode(String id);
 
-    void setPublicationConnection(String publisher, String subscriber);
+    void setPublicationConnection(String publisher, String subscriber, String statistics);
 
 }

@@ -74,7 +74,7 @@ public class DDSToTopologyAdapterImpl implements DDSToTopologyAdapter {
         try {
             String json = mapper.writeValueAsString(entity);
 
-            dao.setPublicationConnection(writerGuid, readerGuid);
+            dao.setPublicationConnection(writerGuid, readerGuid, json);
         } catch (Exception e) {
             logger.error("Could not insert subscription to DB", e);
         }
