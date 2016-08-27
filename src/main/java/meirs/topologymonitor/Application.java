@@ -9,11 +9,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.annotation.Import;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import javax.annotation.PostConstruct;
 
@@ -23,7 +25,7 @@ import javax.annotation.PostConstruct;
 @SpringBootApplication
 @EnableAutoConfiguration
 @Import(DBConfiguration.class)
-public class Application {
+public class Application extends WebMvcConfigurerAdapter {
 
     @Value("${domainId}")
     private String domainIdString;
@@ -34,7 +36,7 @@ public class Application {
     private Dao dao;
 
     public static void main(String[] args) throws Exception {
-        new SpringApplicationBuilder(Application.class).web(false).run(args);
+        SpringApplication.run(Application.class, args);
     }
 
     @PostConstruct
@@ -45,11 +47,5 @@ public class Application {
 
         ParticipantSubscriber participantSubscriber = new ParticipantSubscriber(Integer.valueOf(domainIdString),
                 adapter);
-
-        while(true) {
-
-            Thread.sleep(10000);
-        }
     }
-
 }
