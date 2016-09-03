@@ -20,5 +20,5 @@ From the root directory of this project, set up and start the backend with:
 From the root directory of this project, set up and start the frontend with:
 * `cd frontend`
 * `npm install` (if `package.json` changed)
-* `bower install` to install the styles
+* `bower install` to install all dependencies
 * `gulp serve` starts the app on [http://localhost:9000/](http://localhost:9000/)
