@@ -30,7 +30,7 @@ From the root directory of this project, set up and start the frontend with:
 * `bower install` to install all dependencies
 * `gulp serve` starts the app on [http://localhost:9000/](http://localhost:9000/)
 
-## How to Build
+## How to Deploy
 From the root directory of this project, just run:
 `mvn package`.
 
