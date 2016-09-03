@@ -19,6 +19,7 @@
 ## How to Run
 ### Backend
 From the root directory of this project, set up and start the backend with:
+* add the nddsjava.jar to your local repository using `mvn install:install-file`
 * `cd backend`
 * `mvn spring-boot:run [-Drun.arguments="--domainId=0"]` starts the backend rest webserver on http://localhost:8080
 
