@@ -29,3 +29,11 @@ From the root directory of this project, set up and start the frontend with:
 * `npm install` (if `package.json` changed)
 * `bower install` to install all dependencies
 * `gulp serve` starts the app on [http://localhost:9000/](http://localhost:9000/)
+
+## How to Build
+From the root directory of this project, just run:
+`mvn package`.
+
+Maven will build the frontend project (using npm, bower and gulp) and copy `frontend/dist` to `backend/src/main/resources/static` so that the frontend will be packaged with the backend in the same jar file.
+
+The target jar is in the backend project: `backend/target/backend*.jar`
