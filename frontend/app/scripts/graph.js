@@ -8,7 +8,10 @@ var svg = d3.select("#graph").append("svg")
         .attr("pointer-events", "all");
 
 d3.json("/graph", function(error, graph) {
-    if (error) return;
+
+    if (error) {
+        return;
+    }
 
     force.nodes(graph.nodes).links(graph.links).start();
 
@@ -19,13 +22,13 @@ d3.json("/graph", function(error, graph) {
     var node = svg.selectAll(".node")
             .data(graph.nodes).enter()
             .append("circle")
-            .attr("class", function (d) { return "node "+d.label })
+            .attr("class", function (d) { return "node "+d.label; })
             .attr("r", 10)
             .call(force.drag);
 
     // html title attribute
     node.append("id")
-            .text(function (d) { return d.id; })
+            .text(function (d) { return d.id; });
 
     // force feed algo ticks
     force.on("tick", function() {
