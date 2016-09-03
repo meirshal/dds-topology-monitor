@@ -41,11 +41,11 @@ public class GraphController {
         int i=0;
         while (result.hasNext()) {
             Map<String, Object> row = result.next();
-            nodes.add(map("publisher",row.get("publisher"),"label","publisher"));
+            nodes.add(map("id", row.get("publisher"), "label", "publisher"));
             int target=i;
             i++;
             for (Object name : (Collection) row.get("subscribers")) {
-                Map<String, Object> actor = map("subscriber", name,"label","subscriber");
+                Map<String, Object> actor = map("id", name, "label", "subscriber");
                 int source = nodes.indexOf(actor);
                 if (source == -1) {
                     nodes.add(actor);
