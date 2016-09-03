@@ -7,9 +7,10 @@ var svg = d3.select("#graph").append("svg")
         .attr("width", "100%").attr("height", "100%")
         .attr("pointer-events", "all");
 
-d3.json("/graph", function(error, graph) {
+d3.json("http://localhost:8080/graph", function(error, graph) { //TODO: read the url from some kind of configuration variable
 
     if (error) {
+        console.log("Error while fetching graph from server");
         return;
     }
 
