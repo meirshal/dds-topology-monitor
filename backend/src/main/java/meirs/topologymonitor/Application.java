@@ -27,7 +27,7 @@ import javax.annotation.PostConstruct;
 @Import(DBConfiguration.class)
 public class Application extends WebMvcConfigurerAdapter {
 
-    @Value("${domainId}")
+    @Value("${domainId:0}")
     private String domainIdString;
 
     @Autowired
