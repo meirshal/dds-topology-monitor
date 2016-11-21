@@ -12,7 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Created by mich8bsp on 18/11/16.
+ * Created by Michael Bespalov on 18/11/16.
  */
 public class DDSUtils {
     public static final String QOS_NAME_SEPARATOR = "::";

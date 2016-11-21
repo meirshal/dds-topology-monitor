@@ -3,7 +3,7 @@ package meirs.topologymonitor.dds;
 import com.rti.dds.domain.DomainParticipant;
 
 /**
- * Created by mich8bsp on 18/11/16.
+ * Created by Michael Bespalov on 18/11/16.
  */
 public class DomainParticipantWithQos {
 

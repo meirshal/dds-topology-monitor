@@ -1,4 +1,4 @@
-package meirs.topologymonitor;
+package meirs.topologymonitor.util.strings;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import meirs.topologymonitor.util.strings.ObjectMapperFactory;

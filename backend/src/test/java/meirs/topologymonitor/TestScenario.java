@@ -5,7 +5,7 @@ import com.rti.dds.type.builtin.StringTypeSupport;
 import meirs.topologymonitor.dds.DDSUtils;
 import meirs.topologymonitor.dds.DomainParticipantWithQos;
 import meirs.topologymonitor.dds.TopicSubscriber;
-import meirs.topologymonitor.utils.TopicPublisher;
+import meirs.topologymonitor.util.dds.TopicPublisher;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.springframework.boot.SpringApplication;
@@ -13,7 +13,7 @@ import org.springframework.boot.SpringApplication;
 import java.util.function.Consumer;
 
 /**
- * Created by mich8bsp on 18/11/16.
+ * Created by Michael Bespalov on 18/11/16.
  */
 public class TestScenario {
     private static Consumer<Object> callback = (sample) -> {

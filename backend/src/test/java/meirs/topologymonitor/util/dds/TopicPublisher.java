@@ -1,4 +1,4 @@
-package meirs.topologymonitor.utils;
+package meirs.topologymonitor.util.dds;
 
 import com.rti.dds.domain.DomainParticipant;
 import com.rti.dds.domain.DomainParticipantFactory;
@@ -14,7 +14,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Created by mich8bsp on 18/11/16.
+ * Created by Michael Bespalov on 18/11/16.
  */
 public class TopicPublisher {
     private TypeSupportImpl typeSupport;
