@@ -9,6 +9,7 @@
 *.ear
 .idea/
 *.log
+*.iml
 target/
 dist/
 static/

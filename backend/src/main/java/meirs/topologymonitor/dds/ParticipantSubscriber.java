@@ -1,14 +1,9 @@
 package meirs.topologymonitor.dds;
 
-import com.rti.dds.domain.DomainParticipant;
-import com.rti.dds.domain.DomainParticipantFactory;
 import com.rti.dds.domain.DomainParticipantQos;
-import com.rti.dds.infrastructure.StatusKind;
-
 import meirs.topologymonitor.adapter.DDSToTopologyAdapter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import rti.dds.monitoring.*;
 
 /**
@@ -24,22 +19,12 @@ public class ParticipantSubscriber {
 
     public ParticipantSubscriber(int domainId, DDSToTopologyAdapter adapter) {
 
-        DomainParticipantQos qos = new DomainParticipantQos();
-        DomainParticipantFactory.TheParticipantFactory.get_participant_qos_from_profile(qos, "RtiMonitorQosLibrary", "RtiMonitorQosProfile");
-
-        DomainParticipant participant =
-                DomainParticipantFactory.get_instance().create_participant(
-                        domainId,
-                        qos,
-                        null,       // listener
-                        StatusKind.STATUS_MASK_NONE);
+        DomainParticipantWithQos participant = DDSUtils.createParticipant(domainId);
         if (participant == null) {
-            logger.error("Unable to create DDS domain participant");
             return;
         }
-
         DomainParticipantQos qos1 = new DomainParticipantQos();
-        participant.get_qos(qos1);
+        participant.getParticipant().get_qos(qos1);
         System.out.println(qos1.participant_name.name);
 
 

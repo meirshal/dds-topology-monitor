@@ -1,6 +1,7 @@
 package meirs.topologymonitor.util.strings;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import meirs.topologymonitor.util.strings.ObjectMapperFactory;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import rti.dds.monitoring.DataReaderEntityStatistics;

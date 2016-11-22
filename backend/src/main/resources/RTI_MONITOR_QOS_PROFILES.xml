@@ -1,0 +1,410 @@
+
+<!--
+    (c) Copyright, Real-Time Innovations, 2012-2016.
+    All rights reserved. No duplications, whole or partial, manual or
+    electronic, may be made without express written permission. Any such
+    copies, or revisions thereof, must display this notice unaltered. This
+    code contains trade secrets of Real-Time Innovations, Inc. Description
+    RTI Data Distribution Service QoS Profiles
+-->
+<dds xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="rti_dds_qos_profiles.xsd" version="5.2.3">
+
+    <qos_library name="RtiMonitorQosLibrary">
+        <qos_profile name="RtiMonitorQosProfile">
+
+            <participant_qos>
+                <resource_limits>
+                    <!-- uncomment the following if your user data type has
+                         large type code. You will also need to uncomment the
+                         lines in property to enable large data for UDPv4 and
+                         shared memory -->
+                    <!--type_code_max_serialized_length>35000</type_code_max_serialized_length-->
+                    <participant_property_list_max_length>64</participant_property_list_max_length>
+                    <participant_property_string_max_length>2048</participant_property_string_max_length>
+                </resource_limits>
+                <!-- change the mask to SHMEM if you have no network connection -->
+                <transport_builtin>
+                    <mask>UDPv4 | SHMEM</mask>
+                </transport_builtin>
+                <participant_name>
+                    <name>RTI Monitor</name>
+                </participant_name>
+                <!-- these are the default values and are here for reference.
+                <discovery>
+                    <initial_peers>
+                        <element>builtin.udpv4://239.255.0.1</element>
+                        <element>builtin.udpv4://localhost</element>
+                        <element>builtin.shmem://</element>
+                    </initial_peers>
+                    <multicast_receive_addresses>
+                        <element>239.255.0.1</element>
+                    </multicast_receive_addresses>
+                </discovery-->
+                <discovery_config>
+                    <ignore_default_domain_announcements>false</ignore_default_domain_announcements>
+                    <participant_liveliness_lease_duration>
+                        <sec>100</sec>
+                        <nanosec>0</nanosec>
+                    </participant_liveliness_lease_duration>
+                    <participant_liveliness_assert_period>
+                        <sec>10</sec>
+                        <nanosec>0</nanosec>
+                    </participant_liveliness_assert_period>
+                    <remote_participant_purge_kind>LIVELINESS_BASED_REMOTE_PARTICIPANT_PURGE</remote_participant_purge_kind>
+                    <max_liveliness_loss_detection_period>
+                        <sec>10</sec>
+                        <nanosec>0</nanosec>
+                    </max_liveliness_loss_detection_period>
+                    <initial_participant_announcements>1</initial_participant_announcements>
+                    <min_initial_participant_announcement_period>
+                        <sec>2</sec>
+                        <nanosec>0</nanosec>
+                    </min_initial_participant_announcement_period>
+                    <max_initial_participant_announcement_period>
+                        <sec>2</sec>
+                        <nanosec>0</nanosec>
+                    </max_initial_participant_announcement_period>
+                    <publication_reader>
+                        <min_heartbeat_response_delay>
+                            <sec>0</sec>
+                            <nanosec>0</nanosec>
+                        </min_heartbeat_response_delay>
+                        <max_heartbeat_response_delay>
+                            <sec>0</sec>
+                            <nanosec>0</nanosec>
+                        </max_heartbeat_response_delay>
+                        <heartbeat_suppression_duration>
+                            <sec>0</sec>
+                            <nanosec>0</nanosec>
+                        </heartbeat_suppression_duration>
+                        <nack_period>
+                            <sec>0</sec>
+                            <nanosec>100000000</nanosec>
+                        </nack_period>
+                    </publication_reader>
+                    <subscription_reader>
+                        <min_heartbeat_response_delay>
+                            <sec>0</sec>
+                            <nanosec>0</nanosec>
+                        </min_heartbeat_response_delay>
+                        <max_heartbeat_response_delay>
+                            <sec>0</sec>
+                            <nanosec>0</nanosec>
+                        </max_heartbeat_response_delay>
+                        <heartbeat_suppression_duration>
+                            <sec>0</sec>
+                            <nanosec>0</nanosec>
+                        </heartbeat_suppression_duration>
+                        <nack_period>
+                            <sec>0</sec>
+                            <nanosec>100000000</nanosec>
+                        </nack_period>
+                    </subscription_reader>
+                    <publication_writer>
+                        <low_watermark>0</low_watermark>
+                        <high_watermark>1</high_watermark>
+                        <heartbeat_period>
+                            <sec>5</sec>
+                            <nanosec>0</nanosec>
+                        </heartbeat_period>
+                        <fast_heartbeat_period>
+                            <sec>0</sec>
+                            <nanosec>200000000</nanosec>
+                        </fast_heartbeat_period>
+                        <late_joiner_heartbeat_period>
+                            <sec>0</sec>
+                            <nanosec>200000000</nanosec>
+                        </late_joiner_heartbeat_period>
+                        <max_heartbeat_retries>1000</max_heartbeat_retries>
+                        <heartbeats_per_max_samples>8</heartbeats_per_max_samples>
+                        <min_nack_response_delay>
+                            <sec>0</sec>
+                            <nanosec>0</nanosec>
+                        </min_nack_response_delay>
+                        <max_nack_response_delay>
+                            <sec>0</sec>
+                            <nanosec>0</nanosec>
+                        </max_nack_response_delay>
+                        <nack_suppression_duration>
+                            <sec>0</sec>
+                            <nanosec>0</nanosec>
+                        </nack_suppression_duration>
+                    </publication_writer>
+                    <subscription_writer>
+                        <low_watermark>0</low_watermark>
+                        <high_watermark>1</high_watermark>
+                        <heartbeat_period>
+                            <sec>5</sec>
+                            <nanosec>0</nanosec>
+                        </heartbeat_period>
+                        <fast_heartbeat_period>
+                            <sec>0</sec>
+                            <nanosec>200000000</nanosec>
+                        </fast_heartbeat_period>
+                        <late_joiner_heartbeat_period>
+                            <sec>0</sec>
+                            <nanosec>200000000</nanosec>
+                        </late_joiner_heartbeat_period>
+                        <max_heartbeat_retries>1000</max_heartbeat_retries>
+                        <heartbeats_per_max_samples>8</heartbeats_per_max_samples>
+                        <min_nack_response_delay>
+                            <sec>0</sec>
+                            <nanosec>0</nanosec>
+                        </min_nack_response_delay>
+                        <max_nack_response_delay>
+                            <sec>0</sec>
+                            <nanosec>0</nanosec>
+                        </max_nack_response_delay>
+                        <nack_suppression_duration>
+                            <sec>0</sec>
+                            <nanosec>0</nanosec>
+                        </nack_suppression_duration>
+                    </subscription_writer>
+                </discovery_config>
+                <property>
+                    <value>
+                        <!-- transport properties -->
+                        <element>
+                            <name>dds.transport.UDPv4.builtin.recv_socket_buffer_size</name>
+                            <value>1048576</value>
+                        </element>
+                        <!-- Use the transport identifiers compatible with versions prior to 5.2 -->
+                        <!--element>
+                            <name>dds.transport.use_510_compatible_locator_kinds</name>
+                            <value>true</value>
+                        </element-->
+                        <!--  These are some common UDP properties. They are 
+                              here just for reference.
+                        <element>
+                            <name>dds.transport.UDPv4.builtin.parent.deny_interfaces</name>
+                            <value>10.50.*</value>
+                        </element>
+                        <element>
+                            <name>dds.transport.UDPv4.builtin.multicast_enabled</name>
+                            <value>0</value>
+                        </element>
+                        <element>
+                            <name>dds.transport.UDPv4.builtin.parent.multicast_ttl</name>
+                            <value>3</value>
+                        </element>
+                        <element>
+                            <name>dds.transport.UDPv4.builtin.parent.allow_interfaces</name>
+                            <value>192.*</value>
+                        </element>
+                        -->
+                    </value>
+                </property>
+            </participant_qos>
+            
+            <publisher_qos>
+                <!-- join both the empty and the '*' partition so that we match all combinations. -->
+                <partition>
+                    <name>
+                        <element></element>
+                        <element>*</element>
+                    </name>
+                </partition>
+            </publisher_qos>
+            
+            <subscriber_qos>
+                <!-- join both the empty and the '*' partition so that we match all combinations. -->
+                <partition>
+                    <name>
+                        <element></element>
+                        <element>*</element>
+                    </name>
+                </partition>
+            </subscriber_qos>
+            
+            <datareader_qos name="BaseReaderProfile">
+                <protocol>
+                    <!-- This property keeps the Monitor UI's readers from
+                         showing up in the counts of the monitored application's
+                         discovery metrics. -->
+                    <!--vendor_specific_entity>TRUE</vendor_specific_entity-->
+                </protocol>
+            </datareader_qos>
+            
+            <datareader_qos name="KeepLast1DurableReader" 
+                base_name="RtiMonitorQosProfile::BaseReaderProfile">
+                <durability>
+                    <kind>TRANSIENT_LOCAL_DURABILITY_QOS</kind>
+                </durability>
+
+                <reliability>
+                    <kind>RELIABLE_RELIABILITY_QOS</kind>
+                </reliability>
+
+                <history>
+                    <kind>KEEP_LAST_HISTORY_QOS</kind>
+                    <depth>1</depth>
+                </history>
+                <!--multicast>
+                    <value>
+                        <element>
+                            <receive_address>239.255.0.2</receive_address>
+                        </element>
+                    </value>
+                </multicast-->
+            </datareader_qos>
+            
+            <datareader_qos base_name="KeepLast1DurableReader" 
+                topic_filter="rti/dds/monitoring/*Description"/>
+
+            <datareader_qos topic_filter="rti/dds/monitoring/*Statistics"
+                base_name="RtiMonitorQosProfile::BaseReaderProfile">
+                <reliability>
+                    <kind>BEST_EFFORT_RELIABILITY_QOS</kind>
+                </reliability>
+                <history>
+                    <kind>KEEP_LAST_HISTORY_QOS</kind>
+                    <depth>2</depth>
+                </history>
+            </datareader_qos>
+            
+            <datawriter_qos name="KeepLast1DurableWriter">
+                <durability>
+                    <kind>TRANSIENT_LOCAL_DURABILITY_QOS</kind>
+                </durability>
+
+                <reliability>
+                    <kind>RELIABLE_RELIABILITY_QOS</kind>
+                </reliability>
+
+                <history>
+                    <kind>KEEP_LAST_HISTORY_QOS</kind>
+                    <depth>1</depth>
+                </history>
+            </datawriter_qos>
+            
+            <datareader_qos base_name="KeepLast1DurableReader" 
+                topic_filter="rti/dds/monitoring/*Status">
+                <!-- keep more history for this topic -->
+                <history>
+                    <kind>KEEP_LAST_HISTORY_QOS</kind>
+                    <depth>10</depth>
+                </history>
+            </datareader_qos>
+            
+            <datawriter_qos base_name="KeepLast1DurableWriter" 
+                topic_filter="rti/dds/monitoring/*Status">
+                <!-- keep more history for this topic -->
+                <history>
+                    <kind>KEEP_LAST_HISTORY_QOS</kind>
+                    <depth>10</depth>
+                </history>
+            </datawriter_qos>
+            
+            
+            <!-- Logging -->
+            <datareader_qos topic_filter="rti/distlog">
+                <reliability>
+                    <kind>RELIABLE_RELIABILITY_QOS</kind>
+                </reliability>
+                
+                <durability>
+                    <kind>TRANSIENT_LOCAL_DURABILITY_QOS</kind>
+                </durability>
+                
+                <history>
+                    <kind>KEEP_LAST_HISTORY_QOS</kind>
+                    <depth>150</depth>
+                </history>
+                <resource_limits>
+                    <max_samples_per_instance>150</max_samples_per_instance>
+                    <max_samples>150</max_samples>
+                </resource_limits>
+            </datareader_qos>
+            
+            <datareader_qos topic_filter="rti/distlog/administration/state">
+                <reliability>
+                    <kind>RELIABLE_RELIABILITY_QOS</kind>
+                </reliability>
+                
+                <durability>
+                    <kind>TRANSIENT_LOCAL_DURABILITY_QOS</kind>
+                </durability>
+                
+                <history>
+                    <kind>KEEP_LAST_HISTORY_QOS</kind>
+                    <depth>1</depth>
+                </history>
+                <!--resource_limits>
+                    <max_samples_per_instance>1</max_samples_per_instance>
+                    <max_samples>150</max_samples>
+                </resource_limits-->
+            </datareader_qos>
+            
+            <datawriter_qos topic_filter="rti/distlog/administration/command_request">
+                <reliability>
+                    <kind>RELIABLE_RELIABILITY_QOS</kind>
+                </reliability>
+                
+                <history>
+                    <kind>KEEP_LAST_HISTORY_QOS</kind>
+                    <depth>10</depth>
+                </history>
+            </datawriter_qos>
+            
+            <datareader_qos topic_filter="rti/distlog/administration/command_response">
+                <reliability>
+                    <kind>RELIABLE_RELIABILITY_QOS</kind>
+                </reliability>
+                
+                <history>
+                    <kind>KEEP_LAST_HISTORY_QOS</kind>
+                    <depth>1</depth>
+                </history>
+            </datareader_qos>
+            
+        </qos_profile>
+        
+    </qos_library>
+
+ <qos_library name="MonitorDemoLibrary">
+        <qos_profile name="MonitorDefault" is_default_qos="false">
+            <participant_qos>
+                <participant_name>
+                    <name>RTI Monitoring Demo</name>
+                </participant_name> 
+
+		<!-- increase total property string max length -->
+		<resource_limits>
+		    <participant_property_string_max_length>
+		    	2048
+		    </participant_property_string_max_length>
+		</resource_limits>
+
+                <property>
+                    <value>
+
+						<!-- ================= -->
+						<!-- enable monitoring -->
+						<!-- ================= -->
+
+                        <element>
+                            <name>rti.monitor.library</name>
+                            <value>rtimonitoring</value>
+			                <propagate>false</propagate>
+                        </element>
+                        <element>
+                            <name>rti.monitor.config.qos_library</name>
+                            <value>RtiMonitorQosLibrary</value>
+                            <propagate>false</propagate>
+                        </element>
+                        <element>
+                            <name>rti.monitor.config.qos_profile</name>
+                            <value>RtiMonitorQosProfile</value>
+                            <propagate>false</propagate>
+                        </element>
+                        <element>
+                            <name>rti.monitor.create_function</name>
+                            <value>RTIDefaultMonitor_create</value>
+                        </element>
+                    </value>
+                </property>
+            </participant_qos>
+        </qos_profile>
+</qos_library>
+</dds>
